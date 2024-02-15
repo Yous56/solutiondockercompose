@@ -1,15 +1,23 @@
 version: '3'
 
 services:
+# nom du servcers ou services à paramétrer
   config-server:
+  # bloc de contruction (Build) avec ts les param de servre/services un/un
     build:
+  # context = là où ça se passe = chemin vers l'élément(ciblé)
       context: /home/vagrant/projetgestionvetclinic/spring-petclinic-config-server
+  # nom du dockerfile qui sera utilisé
       dockerfile: Dockerfile
+  # nom du container qui va être créé
     container_name: config-server
+  # ci-dessous le paramétrage deploiement (repré&senté par ce bloc deploy:)
     deploy:
+  # définition des ressources avec des valures max, min
       resources:
         limits:
           memory: 512M
+  # No du ports qui sera utilisé
     ports:
      - 8888:8888
 
@@ -89,6 +97,7 @@ services:
      - visits-service
     ports:
      - 8080:8080
+
 
 
 
