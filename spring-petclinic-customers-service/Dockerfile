@@ -11,4 +11,7 @@ RUN apt-get update \
 RUN tar xzf dockerize.tar.gz
 RUN chmod +x dockerize
 COPY target/spring-petclinic-customers-service-3.0.2.jar app.jar
+# Ci-dessous on demande à ce docker via cette commande d'atndre le démarrage de (discovery-server), ensuite 
+# encore attendre 60 s (timeout) puis lancer son propre démarrage avec la commande "java" appelique 
+# que le fichier.jar
 entrypoint ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java","-jar", "app.jar"]
